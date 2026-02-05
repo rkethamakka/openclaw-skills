@@ -60,8 +60,8 @@ Would you be open to referring me to any of these roles? I'd also appreciate it 
 Thank you for your time!
 
 Best,
-Ravi Kethamakka
-https://rkethamakka.github.io/
+Ravi ${LAST_NAME}
+https://${GITHUB_HANDLE}.github.io/
 
 Role Links:
 1. [URL 1]
@@ -118,7 +118,7 @@ If you're comfortable, I'd appreciate any guidance or a referral. No pressure ei
 ## Key Points
 
 **⚠️ ALWAYS include:**
-- Portfolio URL: **https://rkethamakka.github.io/** (has resume, GitHub, LinkedIn)
+- Portfolio URL: **https://${GITHUB_HANDLE}.github.io/** (has resume, GitHub, LinkedIn)
 - Role URLs as plain text at the end (hyperlinks don't work on all platforms)
 - Ask for BOTH: referral + recruiter intro if possible
 

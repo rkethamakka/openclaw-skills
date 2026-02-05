@@ -14,7 +14,7 @@ Profile and file paths: `skills/job-data/profile.json`
 ## Tracker Location
 
 ```
-/Users/ravikiran/Documents/Google-Drive/ravi_jobs/Ravi Interviews.docx
+${JOBS_DIR}/${TRACKER_FILE}
 ```
 
 ## Tracker Structure
@@ -50,14 +50,14 @@ Profile and file paths: `skills/job-data/profile.json`
 
 **Quick text extraction:**
 ```bash
-unzip -p "/Users/ravikiran/Documents/Google-Drive/ravi_jobs/Ravi Interviews.docx" word/document.xml | sed 's/<[^>]*>//g' | tr -s ' \n' ' '
+unzip -p "${JOBS_DIR}/${TRACKER_FILE}" word/document.xml | sed 's/<[^>]*>//g' | tr -s ' \n' ' '
 ```
 
 **With python-docx (preserves structure):**
 ```python
 from docx import Document
 
-doc = Document("/Users/ravikiran/Documents/Google-Drive/ravi_jobs/Ravi Interviews.docx")
+doc = Document("${JOBS_DIR}/${TRACKER_FILE}")
 table = doc.tables[0]
 
 for row in table.rows[1:]:  # Skip header
@@ -72,7 +72,7 @@ for row in table.rows[1:]:  # Skip header
 ```python
 from docx import Document
 
-doc = Document("/Users/ravikiran/Documents/Google-Drive/ravi_jobs/Ravi Interviews.docx")
+doc = Document("${JOBS_DIR}/${TRACKER_FILE}")
 table = doc.tables[0]
 headers = [cell.text.strip() for cell in table.rows[0].cells]
 expected = ['#', 'Company', 'Location', 'Status', 'Referrer', 'Roles']
@@ -120,7 +120,7 @@ else:
 ```python
 from docx import Document
 
-doc = Document("/Users/ravikiran/Documents/Google-Drive/ravi_jobs/Ravi Interviews.docx")
+doc = Document("${JOBS_DIR}/${TRACKER_FILE}")
 table = doc.tables[0]
 
 # 1. Validate columns
@@ -138,7 +138,7 @@ for row in table.rows[1:]:
 # 3. Update specific columns
 if target_row:
     target_row.cells[3].text = "Applied"  # Status
-    doc.save("/Users/ravikiran/Documents/Google-Drive/ravi_jobs/Ravi Interviews.docx")
+    doc.save("${JOBS_DIR}/${TRACKER_FILE}")
 ```
 
 ## Adding a New Company
@@ -146,7 +146,7 @@ if target_row:
 ```python
 from docx import Document
 
-doc = Document("/Users/ravikiran/Documents/Google-Drive/ravi_jobs/Ravi Interviews.docx")
+doc = Document("${JOBS_DIR}/${TRACKER_FILE}")
 table = doc.tables[0]
 
 # Get next row number
@@ -161,7 +161,7 @@ new_row.cells[3].text = "Search Roles"
 new_row.cells[4].text = ""  # Referrer
 new_row.cells[5].text = ""  # Roles
 
-doc.save("/Users/ravikiran/Documents/Google-Drive/ravi_jobs/Ravi Interviews.docx")
+doc.save("${JOBS_DIR}/${TRACKER_FILE}")
 ```
 
 ## Adding Hyperlinks to Roles

@@ -15,7 +15,7 @@ Profile and file paths: `skills/job-data/profile.json`
 
 ```
 ravi_jobs/
-├── Naga_Ravi_Kiran_Resume_2026.pdf          # Master resume
+├── ${RESUME_FILE}          # Master resume
 ├── Microsoft_Cover_Letter.docx               # Example template
 ├── Salesforce_Agentforce_Principal_Backend_Cover.docx
 ├── Salesforce_AI_Forward_Deployed_Engineer_Cover.docx
@@ -25,7 +25,7 @@ ravi_jobs/
 │   └── [Role2]_Cover.docx
 ```
 
-**Root:** `/Users/ravikiran/Documents/Google-Drive/ravi_jobs`
+**Root:** `${JOBS_DIR}`
 
 ## Trigger Phrases
 
@@ -48,7 +48,7 @@ ravi_jobs/
 **⚠️ ALWAYS read the resume before writing — don't make up projects!**
 
 ```bash
-python3 -c "from pypdf import PdfReader; r = PdfReader('/Users/ravikiran/Documents/Google-Drive/ravi_jobs/Naga_Ravi_Kiran_Resume_2026.pdf'); print(''.join(p.extract_text() for p in r.pages))"
+python3 -c "from pypdf import PdfReader; r = PdfReader('${JOBS_DIR}/${RESUME_FILE}'); print(''.join(p.extract_text() for p in r.pages))"
 ```
 
 ## Example Cover Letters
@@ -121,7 +121,7 @@ Match job themes → project themes:
 
 ```bash
 # Create company folder if needed
-mkdir -p "/Users/ravikiran/Documents/Google-Drive/ravi_jobs/[Company]"
+mkdir -p "${JOBS_DIR}/[Company]"
 ```
 
 **Filename:** `[Role_Short_Name]_Cover.docx`
@@ -145,9 +145,9 @@ doc.add_paragraph("")
 doc.add_paragraph("[Closing]")
 doc.add_paragraph("")
 doc.add_paragraph("Best,")
-doc.add_paragraph("Ravi Kethamakka")
+doc.add_paragraph("Ravi ${LAST_NAME}")
 
-doc.save("/Users/ravikiran/Documents/Google-Drive/ravi_jobs/[Company]/[Role]_Cover.docx")
+doc.save("${JOBS_DIR}/[Company]/[Role]_Cover.docx")
 ```
 
 ## Template
@@ -166,7 +166,7 @@ I'm applying for the [POSITION] at [COMPANY]. [Optional: I was referred by NAME.
 I'd welcome the opportunity to discuss how my experience aligns with [COMPANY]'s goals.
 
 Best,
-Ravi Kethamakka
+Ravi ${LAST_NAME}
 ```
 
 ## Review Format

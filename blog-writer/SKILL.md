@@ -1,11 +1,11 @@
 ---
 name: blog-writer
-description: Write and publish blog posts to rkethamakka.github.io. Use when Raki wants to write a blog post, publish to the site, or update blog content.
+description: Write and publish blog posts to ${GITHUB_HANDLE}.github.io. Use when Raki wants to write a blog post, publish to the site, or update blog content.
 ---
 
 # Blog Writer
 
-Write and publish blog posts to rkethamakka.github.io.
+Write and publish blog posts to ${GITHUB_HANDLE}.github.io.
 
 ## Local Workspace
 
@@ -19,8 +19,8 @@ workspace/blog/
 └── ...
 ```
 
-**GitHub repo:** `rkethamakka/rkethamakka.github.io`
-**Live site:** `https://rkethamakka.github.io/blog/`
+**GitHub repo:** `${GITHUB_HANDLE}/${GITHUB_HANDLE}.github.io`
+**Live site:** `https://${GITHUB_HANDLE}.github.io/blog/`
 
 ## Commands
 
@@ -29,7 +29,7 @@ workspace/blog/
 When Raki asks: "What blogs do I have?" / "Show my posts" / "Blog status"
 
 ```bash
-cat /Users/ravikiran/.openclaw/workspace/blog/index.json
+cat ${WORKSPACE}/blog/index.json
 ```
 
 **Response format:**
@@ -52,7 +52,7 @@ AI (3), distributed-systems (2), career (1)
 When Raki asks: "Show me the [title] post" / "Read [slug]"
 
 ```bash
-cat /Users/ravikiran/.openclaw/workspace/blog/[slug].md
+cat ${WORKSPACE}/blog/[slug].md
 ```
 
 ### Update a Blog
@@ -99,7 +99,7 @@ Content here...
 
 ```bash
 # Save to workspace
-/Users/ravikiran/.openclaw/workspace/blog/[slug].md
+${WORKSPACE}/blog/[slug].md
 ```
 
 **Step 4: Update index.json**
@@ -134,11 +134,11 @@ The slug becomes the URL: `/blog/post.html?p=building-ai-agents`
 ### Option 1: Git Push (if configured)
 
 ```bash
-cd /tmp/rkethamakka.github.io
+cd /tmp/${GITHUB_HANDLE}.github.io
 git pull origin main
 
 # Copy updated files
-cp /Users/ravikiran/.openclaw/workspace/blog/[slug].md blog/posts/
+cp ${WORKSPACE}/blog/[slug].md blog/posts/
 
 # Update blog index.html (see HTML Index section)
 
@@ -152,8 +152,8 @@ git push origin main
 If git auth isn't configured, use GitHub web UI:
 
 1. Start browser: `browser action=start profile="openclaw"`
-2. Upload post to: `github.com/rkethamakka/rkethamakka.github.io/upload/main/blog/posts`
-3. Upload updated index.html to: `github.com/rkethamakka/rkethamakka.github.io/upload/main/blog`
+2. Upload post to: `github.com/${GITHUB_HANDLE}/${GITHUB_HANDLE}.github.io/upload/main/blog/posts`
+3. Upload updated index.html to: `github.com/${GITHUB_HANDLE}/${GITHUB_HANDLE}.github.io/upload/main/blog`
 
 ## HTML Index (blog/index.html)
 
@@ -220,7 +220,7 @@ After any blog change, update the index:
 ```python
 import json
 
-index_path = "/Users/ravikiran/.openclaw/workspace/blog/index.json"
+index_path = "${WORKSPACE}/blog/index.json"
 with open(index_path) as f:
     index = json.load(f)
 
@@ -255,11 +255,11 @@ with open(index_path, "w") as f:
 If the repo has posts not in local workspace:
 
 ```bash
-cd /tmp/rkethamakka.github.io
+cd /tmp/${GITHUB_HANDLE}.github.io
 git pull origin main
 
 # Copy any new posts
-cp blog/posts/*.md /Users/ravikiran/.openclaw/workspace/blog/
+cp blog/posts/*.md ${WORKSPACE}/blog/
 
 # Then rebuild index.json by scanning frontmatter
 ```
@@ -271,7 +271,7 @@ import os
 import json
 import re
 
-blog_dir = "/Users/ravikiran/.openclaw/workspace/blog"
+blog_dir = "${WORKSPACE}/blog"
 posts = []
 topics = {}
 
@@ -326,15 +326,15 @@ with open(os.path.join(blog_dir, "index.json"), "w") as f:
 - [ ] Write post in workspace/blog/[slug].md
 - [ ] Include proper frontmatter (title, date, tags)
 - [ ] Update workspace/blog/index.json
-- [ ] Copy post to /tmp/rkethamakka.github.io/blog/posts/
-- [ ] Update /tmp/rkethamakka.github.io/blog/index.html
+- [ ] Copy post to /tmp/${GITHUB_HANDLE}.github.io/blog/posts/
+- [ ] Update /tmp/${GITHUB_HANDLE}.github.io/blog/index.html
 - [ ] Push to GitHub (git or browser upload)
-- [ ] Verify live at rkethamakka.github.io/blog/
+- [ ] Verify live at ${GITHUB_HANDLE}.github.io/blog/
 
 ## Site Structure Reference
 
 ```
-rkethamakka.github.io/
+${GITHUB_HANDLE}.github.io/
 ├── index.html              # Resume (main page)
 ├── blog/
 │   ├── index.html          # Blog listing (must list all posts)
@@ -345,10 +345,10 @@ rkethamakka.github.io/
 
 ## URLs
 
-- **Resume:** https://rkethamakka.github.io
-- **Blog index:** https://rkethamakka.github.io/blog/
-- **Post template:** https://rkethamakka.github.io/blog/post.html?p=SLUG
-- **Repo:** https://github.com/rkethamakka/rkethamakka.github.io
+- **Resume:** https://${GITHUB_HANDLE}.github.io
+- **Blog index:** https://${GITHUB_HANDLE}.github.io/blog/
+- **Post template:** https://${GITHUB_HANDLE}.github.io/blog/post.html?p=SLUG
+- **Repo:** https://github.com/${GITHUB_HANDLE}/${GITHUB_HANDLE}.github.io
 
 ---
 

@@ -64,7 +64,7 @@ When Raki invokes role discovery, ask:
 - Platform Engineer
 - AI/ML Platform (not ML Engineer titles)
 
-**Location filter:** Seattle, WA or Remote (US)
+**Location filter:** ${LOCATION_SHORT} or Remote (US)
 
 **Select 5 roles per company**
 

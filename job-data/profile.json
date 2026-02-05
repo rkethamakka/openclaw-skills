@@ -1,28 +1,28 @@
 {
   "personal": {
-    "full_name": "Naga Ravi Kiran Kethamakka",
-    "first_name": "Naga Ravi Kiran",
-    "last_name": "Kethamakka",
+    "full_name": "${FULL_NAME}",
+    "first_name": "${FIRST_NAME}",
+    "last_name": "${LAST_NAME}",
     "preferred_name": "Ravi",
-    "name_pronunciation": "RAH-vee KEE-run keh-tha-MAH-kka",
-    "email": "ravikiran.kn@gmail.com",
-    "phone": "7135621997",
-    "location": "Seattle, WA, USA"
+    "name_pronunciation": "${NAME_PRONUNCIATION}",
+    "email": "${EMAIL}",
+    "phone": "${PHONE}",
+    "location": "${LOCATION}"
   },
   "professional": {
-    "current_company": "Expedia Group",
+    "current_company": "${CURRENT_COMPANY}",
     "years_experience": "12+",
-    "linkedin": "https://www.linkedin.com/in/ravikirankn/",
-    "github": "https://github.com/rkethamakka",
-    "portfolio": "https://rkethamakka.github.io"
+    "linkedin": "https://www.linkedin.com/in/${LINKEDIN_HANDLE}/",
+    "github": "https://github.com/${GITHUB_HANDLE}",
+    "portfolio": "https://${GITHUB_HANDLE}.github.io"
   },
   "education": {
-    "university": "University of Houston - Main Campus"
+    "university": "${UNIVERSITY}"
   },
   "work_authorization": {
     "authorized": true,
     "requires_sponsorship": true,
-    "visa_status": "H-1B with I-140 approved"
+    "visa_status": "${VISA_STATUS}"
   },
   "demographics": {
     "veteran_status": "I am not a Protected Veteran",
@@ -30,8 +30,8 @@
     "languages": ["English", "Hindi", "Telugu"]
   },
   "files": {
-    "tracker": "/Users/ravikiran/Documents/Google-Drive/ravi_jobs/Ravi Interviews.docx",
-    "resume": "/Users/ravikiran/Documents/Google-Drive/ravi_jobs/Naga_Ravi_Kiran_Resume_2026.pdf",
-    "cover_letters_root": "/Users/ravikiran/Documents/Google-Drive/ravi_jobs"
+    "tracker": "${JOBS_DIR}/${TRACKER_FILE}",
+    "resume": "${JOBS_DIR}/${RESUME_FILE}",
+    "cover_letters_root": "${JOBS_DIR}"
   }
 }

@@ -1,6 +1,6 @@
 {
-  "handle": "@rkethamakka",
-  "email": "rkethamakka@gmail.com",
+  "handle": "@${GITHUB_HANDLE}",
+  "email": "${EMAIL_ALT}",
   "bio": "Senior SDE @Expedia | Building AI agents & platforms | Distributed systems | Seattle 🌲",
   "topics": [
     "AI/ML Engineering",

@@ -61,7 +61,7 @@ Roles (5):
 5. Staff+ SWE, Data Infrastructure ✅ Cover letter ready
 
 Profile: ✅ Account exists
-Resume: Naga_Ravi_Kiran_Resume_2026.pdf
+Resume: ${RESUME_FILE}
 
 Proceed? (yes/no)
 ```
@@ -91,25 +91,25 @@ doc.save(tracker_path)
 
 | Field | Value |
 |-------|-------|
-| Full Name | Naga Ravi Kiran Kethamakka |
-| First Name | Naga Ravi Kiran |
-| Last Name | Kethamakka |
+| Full Name | ${FULL_NAME} |
+| First Name | ${FIRST_NAME} |
+| Last Name | ${LAST_NAME} |
 | Preferred Name | **Ravi** (not Raki!) |
-| Email | **ravikiran.kn@gmail.com** |
-| Phone | 7135621997 |
-| Location | Seattle, WA, USA |
-| Company | Expedia Group |
-| LinkedIn | https://www.linkedin.com/in/ravikirankn/ |
-| GitHub | https://github.com/rkethamakka |
-| Portfolio | https://rkethamakka.github.io |
-| University | University of Houston - Main Campus |
+| Email | **${EMAIL}** |
+| Phone | ${PHONE} |
+| Location | ${LOCATION} |
+| Company | ${CURRENT_COMPANY} |
+| LinkedIn | https://www.linkedin.com/in/${LINKEDIN_HANDLE}/ |
+| GitHub | https://github.com/${GITHUB_HANDLE} |
+| Portfolio | https://${GITHUB_HANDLE}.github.io |
+| University | ${UNIVERSITY} |
 | Work Auth | Yes (authorized) |
 | Sponsorship | Yes (needs H-1B) |
-| Visa Status | H-1B with I-140 approved |
+| Visa Status | ${VISA_STATUS} |
 | Languages | English, Hindi, Telugu |
 | Veteran | I am not a Protected Veteran |
 | Disability | I do not want to answer |
-| Pronunciation | RAH-vee KEE-run keh-tha-MAH-kka |
+| Pronunciation | ${NAME_PRONUNCIATION} |
 
 ## Form Filling Best Practices
 
@@ -165,7 +165,7 @@ doc.save(tracker_path)
 ### Reading the Resume
 
 ```bash
-python3 -c "from pypdf import PdfReader; r = PdfReader('/Users/ravikiran/Documents/Google-Drive/ravi_jobs/Naga_Ravi_Kiran_Resume_2026.pdf'); print(''.join(p.extract_text() for p in r.pages))"
+python3 -c "from pypdf import PdfReader; r = PdfReader('${JOBS_DIR}/${RESUME_FILE}'); print(''.join(p.extract_text() for p in r.pages))"
 ```
 
 ## Portal-Specific: Lever
@@ -185,7 +185,7 @@ python3 -c "from pypdf import PdfReader; r = PdfReader('/Users/ravikiran/Documen
 - [ ] Fill Preferred Name: `Ravi`
 - [ ] Fill Pronunciation
 - [ ] Select Work Auth: Yes | Sponsorship: Yes
-- [ ] Select University: `University of Houston - Main Campus`
+- [ ] Select University: `${UNIVERSITY}`
 - [ ] Select "How heard": Company Website / LinkedIn
 - [ ] Write essays if required
 - [ ] Select Veteran status
@@ -197,7 +197,7 @@ python3 -c "from pypdf import PdfReader; r = PdfReader('/Users/ravikiran/Documen
 
 **University dropdown (Lever):**
 ```
-browser action=act request={"kind": "select", "ref": "<combobox_ref>", "values": ["University of Houston - Main Campus"]}
+browser action=act request={"kind": "select", "ref": "<combobox_ref>", "values": ["${UNIVERSITY}"]}
 ```
 
 ## Portal-Specific: Greenhouse
@@ -216,7 +216,7 @@ browser action=act request={"kind": "select", "ref": "<combobox_ref>", "values":
 
 **Resume location:**
 ```
-/Users/ravikiran/Documents/Google-Drive/ravi_jobs/Naga_Ravi_Kiran_Resume_2026.pdf
+${JOBS_DIR}/${RESUME_FILE}
 ```
 
 **Lever workaround:**
@@ -252,7 +252,7 @@ browser action=act request={"kind": "click", "ref": "apply-button"}
 
 **Type:**
 ```
-browser action=act request={"kind": "type", "ref": "email-input", "text": "ravikiran.kn@gmail.com"}
+browser action=act request={"kind": "type", "ref": "email-input", "text": "${EMAIL}"}
 ```
 
 **Select dropdown:**
