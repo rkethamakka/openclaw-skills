@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{TITLE}} - Ravi Kiran</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+        }
+        header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 2rem 3rem;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        header h1 { font-size: 1.75rem; font-weight: 700; }
+        header h1 a { color: white; text-decoration: none; }
+        nav a {
+            color: #a5b4fc;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        nav a:hover { color: white; }
+        main { padding: 2rem 3rem; }
+        article {}
+        .post-title {
+            font-size: 2.25rem;
+            color: #1a1a2e;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+        .post-meta {
+            color: #718096;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .tag {
+            display: inline-block;
+            background: #e2e8f0;
+            color: #667eea;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            margin-left: 0.5rem;
+        }
+        .post-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #2d3748;
+        }
+        .post-content h2 {
+            font-size: 1.5rem;
+            color: #1a1a2e;
+            margin: 2rem 0 1rem;
+        }
+        .post-content h3 {
+            font-size: 1.25rem;
+            color: #1a1a2e;
+            margin: 1.5rem 0 0.75rem;
+        }
+        .post-content p { margin-bottom: 1.25rem; }
+        .post-content ul, .post-content ol {
+            margin: 1rem 0 1.25rem 1.5rem;
+        }
+        .post-content li { margin-bottom: 0.5rem; }
+        .post-content code {
+            background: #f1f5f9;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        .post-content pre {
+            background: #1a1a2e;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+        .post-content pre code {
+            background: none;
+            padding: 0;
+            color: inherit;
+        }
+        .post-content blockquote {
+            border-left: 4px solid #667eea;
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            color: #4a5568;
+            font-style: italic;
+        }
+        .post-content a {
+            color: #667eea;
+            text-decoration: underline;
+        }
+        .post-content img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #f8fafc;
+            color: #718096;
+            font-size: 0.9rem;
+        }
+        footer a { color: #667eea; }
+        @media (max-width: 640px) {
+            body { padding: 1rem; }
+            header { padding: 1.5rem; }
+            .header-content { flex-direction: column; text-align: center; }
+            nav a { margin: 0.5rem; }
+            main { padding: 1.5rem; }
+            .post-title { font-size: 1.75rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1><a href="/">Ravi Kiran</a></h1>
+                <nav>
+                    <a href="/">Resume</a>
+                    <a href="/blog/">Blog</a>
+                    <a href="https://github.com/rkethamakka" target="_blank">GitHub</a>
+                    <a href="https://x.com/rkethamakka" target="_blank">Twitter</a>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <article>
+                <h1 class="post-title">{{TITLE}}</h1>
+                <p class="post-meta">{{DATE}} <span class="tag">{{TAG1}}</span><span class="tag">{{TAG2}}</span></p>
+                
+                <div class="post-content">
+                    {{CONTENT}}
+                </div>
+            </article>
+        </main>
+
+        <footer>
+            <p>Built with ❤️ • <a href="/blog/">Back to Blog</a></p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+{
+  "personal": {
+    "full_name": "Naga Ravi Kiran Kethamakka",
+    "first_name": "Naga Ravi Kiran",
+    "last_name": "Kethamakka",
+    "preferred_name": "Ravi",
+    "name_pronunciation": "RAH-vee KEE-run keh-tha-MAH-kka",
+    "email": "ravikiran.kn@gmail.com",
+    "phone": "7135621997",
+    "location": "Seattle, WA, USA"
+  },
+  "professional": {
+    "current_company": "Expedia Group",
+    "years_experience": "12+",
+    "linkedin": "https://www.linkedin.com/in/ravikirankn/",
+    "github": "https://github.com/rkethamakka",
+    "portfolio": "https://rkethamakka.github.io"
+  },
+  "education": {
+    "university": "University of Houston - Main Campus"
+  },
+  "work_authorization": {
+    "authorized": true,
+    "requires_sponsorship": true,
+    "visa_status": "H-1B with I-140 approved"
+  },
+  "demographics": {
+    "veteran_status": "I am not a Protected Veteran",
+    "disability_status": "I do not want to answer",
+    "languages": ["English", "Hindi", "Telugu"]
+  },
+  "files": {
+    "tracker": "/Users/ravikiran/Documents/Google-Drive/ravi_jobs/Ravi Interviews.docx",
+    "resume": "/Users/ravikiran/Documents/Google-Drive/ravi_jobs/Naga_Ravi_Kiran_Resume_2026.pdf",
+    "cover_letters_root": "/Users/ravikiran/Documents/Google-Drive/ravi_jobs"
+  }
+}

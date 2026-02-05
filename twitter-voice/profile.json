@@ -1,0 +1,28 @@
+{
+  "handle": "@rkethamakka",
+  "email": "rkethamakka@gmail.com",
+  "bio": "Senior SDE @Expedia | Building AI agents & platforms | Distributed systems | Seattle 🌲",
+  "topics": [
+    "AI/ML Engineering",
+    "Platform Engineering", 
+    "Developer Experience",
+    "Distributed Systems",
+    "Building in Public"
+  ],
+  "posting_frequency": "2-3x per week",
+  "last_posted": null,
+  "draft_queue": [],
+  "content_pillars": {
+    "ai_engineering": "Building AI systems, agents, LLMs in production",
+    "platform": "APIs, gateways, distributed systems at scale",
+    "devex": "Tools, workflows, productivity hacks",
+    "career": "Job search insights (optional)",
+    "building": "Personal projects, OpenClaw journey"
+  },
+  "voice": {
+    "tone": "Direct, technical but accessible",
+    "humor": "Occasional, not forced",
+    "emojis": "Sparingly (1-2 max)",
+    "hashtags": "Minimal (1-2 relevant)"
+  }
+}
