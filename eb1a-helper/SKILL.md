@@ -114,7 +114,8 @@ Load config from: `skills/eb1a-helper/config.json`
 **Step 1: Update PLAN.md**
 - Define article title and focus
 - Note what to include / exclude
-- Track status: [ ] Outline → [ ] Draft → [ ] Review → [ ] Final
+- Track status: [ ] Outline → [ ] Draft → [ ] Refine → [ ] Review → [ ] Final
+- Mark articles needing refinement with user-provided examples later
 
 **Step 2: Write Article as .docx**
 - Use python-docx to create proper Word document
@@ -171,6 +172,29 @@ doc.save('{drive.root}/Scholarly Articles/Article1_Name.docx')
 - **Research style** — Include statistics, percentages, industry analyses
 - **Academic tone** — Suitable for scholarly publication
 - **Diagram placeholders** — Note where visuals should go
+
+### Category-Specific Writing Styles
+
+**Category 1 (Expertise-Specific Concepts):**
+- **BEGINNER-FRIENDLY** — Write for non-technical readers
+- Use **analogies** (e.g., "like a security guard at a building entrance")
+- Explain "what" and "why" before "how"
+- Avoid deep technical jargon
+- Include simple, relatable examples throughout
+
+**Category 2 (Research and Innovations):**
+- Can be more technical — for readers familiar with the field
+- Focus on cutting-edge developments and trends
+- Include implementation details and real metrics
+- Your journey/experience fits here
+
+### Article Refinement Tracking
+
+Articles may need refinement after initial draft. Track in PLAN.md:
+```
+**Status:** [x] Draft → [ ] Refine (awaiting examples) → [ ] Review → [ ] Final
+**Refinement Notes:** [What needs to be added/changed]
+```
 
 ---
 
