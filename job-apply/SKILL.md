@@ -98,6 +98,11 @@ doc.save(tracker_path)
 | Email | **${EMAIL}** |
 | Phone | ${PHONE} |
 | Location | ${LOCATION} |
+| Street Address | 923 N 98th ST |
+| City | Seattle |
+| State | Washington (or WA) |
+| Postal Code | 98103 |
+| County | King |
 | Company | ${CURRENT_COMPANY} |
 | LinkedIn | https://www.linkedin.com/in/${LINKEDIN_HANDLE}/ |
 | GitHub | https://github.com/${GITHUB_HANDLE} |
@@ -108,7 +113,7 @@ doc.save(tracker_path)
 | Visa Status | ${VISA_STATUS} |
 | Languages | English, Hindi, Telugu |
 | Veteran | I am not a Protected Veteran |
-| Disability | I do not want to answer |
+| Disability | **No, I do not have a disability** |
 | Pronunciation | ${NAME_PRONUNCIATION} |
 
 ## Form Filling Best Practices
@@ -212,6 +217,34 @@ browser action=act request={"kind": "select", "ref": "<combobox_ref>", "values":
 - Profile auto-fill from account
 - Multi-page forms
 
+## Portal-Specific: Oracle
+
+**⚠️ ORACLE-SPECIFIC QUIRKS:**
+
+1. **Email verification required** — Sends code to email, must enter before continuing
+2. **Multi-step flow** — Personal Info → Experience → More About You
+3. **State/County dropdowns** — May need exact values (e.g., "Washington" not "WA")
+4. **Education before Experience** — Form enforces this order
+5. **Resume upload** — Usually works with standard upload, but verify
+6. **Skills section** — Pre-suggests skills, add relevant ones
+7. **Long text fields** — May have character limits (check before pasting)
+8. **Save frequently** — Progress can be lost on back-navigation
+
+**Oracle Experience Entry Format:**
+```
+Company: Expedia, Inc.
+Location: ${LOCATION_SHORT}
+Title: Senior Software Development Engineer
+Start: June 2018
+End: Present (check "Current")
+Description: [Combined description of all projects/roles]
+```
+
+**Oracle Disability Options:**
+- "Yes, I have a disability..."
+- "No, I do not have a disability..."  ← USE THIS ONE
+- "I do not wish to answer"
+
 ## Resume Upload
 
 **Resume location:**
@@ -280,15 +313,120 @@ Track portal accounts in `skills/job-apply/portals.json`:
 }
 ```
 
+## Pitfalls & Lessons Learned
+
+**⚠️ HARD-WON LESSONS FROM FAILED ATTEMPTS:**
+
+### 1. PDF Resume Reading
+
+PDFs are binary — **Read tool shows gibberish**. Extract text with pypdf:
+
+```bash
+python3 -c "from pypdf import PdfReader; r = PdfReader('${JOBS_DIR}/${RESUME_FILE}'); print(''.join(p.extract_text() for p in r.pages))"
+```
+
+### 2. Email Verification Mid-Application
+
+Some portals (Oracle, Workday) send verification codes during application.
+- **Watch for:** "Enter code sent to your email"
+- **Action:** Pause, ask Raki for the code, then continue
+
+### 3. Job Title Accuracy
+
+**⚠️ Raki's title at Expedia is "Senior Software Engineer" — NOT Principal/Staff!**
+
+Don't assume titles from role descriptions. Use exact title from resume.
+
+### 4. Multiple Roles at Same Company
+
+When adding work experience, **combine all roles at same company into ONE entry**:
+- Company: Expedia, Inc.
+- Title: Senior Software Development Engineer
+- Dates: June 2018 – Present
+- Description: List all projects chronologically (AI Agents, API Gateway, Control Plane, etc.)
+
+**DON'T** add separate entries for each internal role/project.
+
+### 5. ALL Work History Required
+
+Many applications want **complete work history**, not just current job:
+
+| Order | Company | Title | Dates |
+|-------|---------|-------|-------|
+| 1 | Expedia | Senior SDE | June 2018 – Present |
+| 2 | Insperity | Business App Developer | Jan 2016 – June 2018 |
+| 3 | Yatra TG Stays | Senior Software Engineer | July 2012 – July 2014 |
+
+**Additional/Research (if form has section):**
+- UH Research Assistant (Aug 2014 – Jan 2016)
+- UH Software Developer (Jan 2016 – June 2016)
+
+### 6. Education Required First
+
+Some forms require education BEFORE work experience:
+
+| Degree | School | Dates |
+|--------|--------|-------|
+| MS Computer Science | University of Houston | 2014 – 2016 |
+| BE Computer Science | BITS Pilani – KK Birla Goa Campus | 2007 – 2012 |
+
+### 7. Address Field Breakdown
+
+Address may be split into multiple fields:
+- **Street:** 923 N 98th ST
+- **City:** Seattle
+- **State:** WA / Washington
+- **Postal Code:** 98103
+- **County:** King (sometimes required!)
+
+### 8. Skills from Suggestions
+
+Forms may show suggested skills. Add relevant ones from resume:
+- SQL, Java, Python, JavaScript/TypeScript
+- Kubernetes, AWS, Docker, Terraform
+- Kafka, Redis, PostgreSQL, DynamoDB
+- Spring Boot, REST APIs
+
+**DON'T add skills you can't back up in an interview.**
+
+### 9. Multi-Step Application Forms
+
+Enterprise portals (Oracle, Workday) have multiple steps:
+
+```
+Step 1: Personal Info → Name, Contact, Address
+Step 2: Experience → Education, Work History, Skills, Resume
+Step 3: More About You → EEO, Disability, Veteran, etc.
+```
+
+**Save progress between steps.** Some portals lose data on back-navigation.
+
+### 10. Google Drive Long Paths
+
+The actual resume path through Google Drive:
+```
+${HOME}/Library/CloudStorage/GoogleDrive-${EMAIL_ALT}/.shortcut-targets-by-id/1WN3YyrubVytgstdOBpof50wb-ouDYYuk/ravi_jobs/${RESUME_FILE}
+```
+
+**Symlink shortcut:**
+```
+${JOBS_DIR}/${RESUME_FILE}
+```
+
+Use the symlink when possible, but fall back to full path if needed.
+
 ## Error Handling
 
 | Issue | Action |
 |-------|--------|
-| Form field not found | Screenshot, ask Raki |
+| Form field not found | Snapshot, describe to Raki |
 | Login failed | Prompt for manual login |
 | Upload failed | Try alternative or manual |
 | CAPTCHA | Pause, ask Raki to solve |
 | Rate limited | Wait and retry |
+| Verification code | Ask Raki for email code |
+| Field validation error | Read error, fix value |
+| Dropdown won't select | Try typing + arrow keys |
 
 ## Safety
 
