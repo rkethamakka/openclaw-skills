@@ -1,0 +1,19 @@
+{
+  "asana": {
+    "workspace_url": "https://app.asana.com/1/${ASANA_WORKSPACE_ID}/home",
+    "project_url": "https://app.asana.com/1/${ASANA_WORKSPACE_ID}/project/${ASANA_PROJECT_ID}/list/${ASANA_LIST_ID}",
+    "project_name": "${ASANA_PROJECT_NAME}"
+  },
+  "drive": {
+    "root": "${EB1A_DRIVE_ROOT}"
+  },
+  "cmt": {
+    "url": "https://cmt3.research.microsoft.com",
+    "email": "${EMAIL_CMT}",
+    "password": "${CMT_PASSWORD}",
+    "conferences": [
+      "ESCI2026", "ICADS2026", "ICCCET2026", "ICCIDS2026", "ICCTAC2026", "ICDCECE2026",
+      "ICDSINC2025", "ICICACS2026", "ICIICS2026", "ICISCN2026", "ICWCIE2026", "ISED2025"
+    ]
+  }
+}

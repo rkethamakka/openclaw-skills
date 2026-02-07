@@ -42,7 +42,9 @@ ${JOBS_DIR}/${TRACKER_FILE}
 | `Applied` | Already submitted |
 | `Recruiter Call Done` | Had initial call |
 | `Interview: [Date]` | Interview scheduled |
-| `In Loop - Scheduling` | Onsite scheduling |
+| `In Loop: [Dates]` | Onsite scheduled (e.g. Feb 16-17) |
+| `Stalled` | No response, recruiter ghosted, blocked |
+| `Rejected` | Application rejected |
 | `Limited Roles` | Few/no relevant positions |
 | `Closed` | Not pursuing |
 

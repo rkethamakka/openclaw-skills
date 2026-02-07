@@ -405,7 +405,7 @@ Step 3: More About You → EEO, Disability, Veteran, etc.
 
 The actual resume path through Google Drive:
 ```
-${HOME}/Library/CloudStorage/GoogleDrive-${EMAIL_ALT}/.shortcut-targets-by-id/1WN3YyrubVytgstdOBpof50wb-ouDYYuk/ravi_jobs/${RESUME_FILE}
+${HOME}/Library/CloudStorage/GoogleDrive-${EMAIL_ALT}/.shortcut-targets-by-id/${JOBS_DRIVE_ID}/ravi_jobs/${RESUME_FILE}
 ```
 
 **Symlink shortcut:**

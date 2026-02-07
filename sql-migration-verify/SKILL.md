@@ -14,10 +14,50 @@ Compare SQL Server vs Snowflake to verify migration correctness.
 - User says "verify", "compare", or "test migration"
 - Called by sql-migration skill after deployment (optional)
 
+## Output Files (STRICT)
+
+**ONLY create this file:**
+- `test/results/VERIFICATION_SUMMARY_<procedure>.md` (procedure-specific verification report)
+
+Example: `VERIFICATION_SUMMARY_usp_ProcessBudgetConsolidation.md`
+
+**DO NOT create:**
+- ❌ Any other .md files (no detailed reports, no investigation guides)
+- ❌ Any SQL scripts
+- ❌ Any helper files
+
+Keep reports concise (under 60 lines) with:
+- Execution status
+- Business logic validation
+- Key findings
+- Conclusion
+
+**Why procedure-specific files?** Allows running multiple procedures without overwriting results.
+
 ## Prerequisites
 - Snowflake has migrated objects
 - SQL Server Docker running
 - Test data available (or will be generated)
+
+## Prerequisites
+
+**Snowflake CLI:**
+```bash
+which snow || find /usr -name "snow" 2>/dev/null || find ~/Library -name "snow" 2>/dev/null
+```
+
+If not found, install: `pip install snowflake-cli-labs`
+
+**Docker:** SQL Server container must be running:
+```bash
+docker ps | grep sqlserver
+```
+
+If not running:
+```bash
+docker start sqlserver
+```
+
 
 ---
 
@@ -125,7 +165,7 @@ EOF
 
 # Deploy to SQL Server
 docker exec sqlserver /opt/mssql-tools18/bin/sqlcmd \
-  -S localhost -U sa -P 'TestPass123!' -C \
+  -S localhost -U sa -P 'YourStrong@Passw0rd' -C \
   -d FINANCIAL_PLANNING -i /path/to/<procedure>_fixed.sql
 ```
 
@@ -225,20 +265,29 @@ Result: <success/failure>
 
 ## Workflow
 
+### Step 0: Setup Environment
+
+**IMPORTANT:** Ensure snow CLI is in PATH for all Bash commands:
+
+Every Bash command that uses `snow` must include PATH setup:
+```bash
+export PATH="$PATH:$HOME/Library/Python/3.9/bin" && snow sql -q "..."
+```
+
 ### Step 1: Ensure SQL Server Has Objects
 
 For each object in migration plan:
 ```bash
 # Check if exists
 docker exec sqlserver /opt/mssql-tools18/bin/sqlcmd \
-  -S localhost -U sa -P 'TestPass123!' -C \
+  -S localhost -U sa -P 'YourStrong@Passw0rd' -C \
   -d FINANCIAL_PLANNING -Q "
   SELECT OBJECT_ID('Planning.<object>')
 "
 
 # If NULL (not exists), deploy from src/
 docker exec sqlserver /opt/mssql-tools18/bin/sqlcmd \
-  -S localhost -U sa -P 'TestPass123!' -C \
+  -S localhost -U sa -P 'YourStrong@Passw0rd' -C \
   -d FINANCIAL_PLANNING -Q "<content of src/.../<object>.sql>"
 ```
 
@@ -468,13 +517,13 @@ ORDER BY GLAccountID, CostCenterID, FiscalPeriodID;
 **SQL Server:**
 ```bash
 docker exec sqlserver /opt/mssql-tools18/bin/sqlcmd \
-  -S localhost -U sa -P 'TestPass123!' -C \
+  -S localhost -U sa -P 'YourStrong@Passw0rd' -C \
   -d FINANCIAL_PLANNING -Q "<query>"
 ```
 
 **Snowflake:**
 ```bash
-${PYTHON_BIN}/snow sql -q "<query>"
+snow sql -q "<query>"
 ```
 
 ---
