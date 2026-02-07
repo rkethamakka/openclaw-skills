@@ -80,18 +80,23 @@ ALREADY_REVIEWED:
 ```
 1. User picks a paper (e.g., "#88")
 2. Navigate to that conference's reviewer console
-3. Click on the paper title link to open summary page
+3. Click on paper title link to open summary page
 4. Download PDF using CDP + curl (see below)
 5. Read PDF from ~/Downloads/ folder
 6. Analyze paper content
-7. Draft review (grade + strengths/weaknesses + comments)
-8. SHOW DRAFT TO USER - ask for feedback/approval
+7. Draft review (ratings + strengths/weaknesses + comments)
+8. SHOW DRAFT TO USER — ask for feedback/approval
 9. Once approved, click "Enter Review" on CMT
-10. Fill form with approved content
-11. Confirm before final submit
+10. Fill form with approved content (all ratings + comments)
+11. Create review summary PDF (see File Upload section)
+12. Upload PDF to review form
+13. SHOW USER: uploaded file name + form summary for final confirmation
+14. Wait for explicit "submit" from user
+15. Click Submit button
+16. Verify submission succeeded (check for "View Review" link)
 ```
 
-**⚠️ NEVER auto-submit. Always show draft and get user approval first.**
+**⚠️ NEVER auto-submit. Always show draft AND upload summary to user first.**
 
 ---
 
@@ -147,6 +152,8 @@ for page in doc:
 - Keep it brief and direct
 - No em-dashes
 - Strengths/weaknesses must match your grade
+- **Never compare papers to each other** - evaluate each paper on its own merits
+- Each review is independent; don't reference other submissions
 
 ---
 
@@ -226,6 +233,185 @@ Before submitting any review:
 2. Are strengths/weaknesses counts balanced for my grade?
 3. No em-dashes used?
 4. Brief and direct? (No filler phrases)
+
+---
+
+## Review File Upload (Required!)
+
+**⚠️ ICCTAC2026 requires at least 1 file upload with review!**
+
+**Step 1: Create PDF summary**
+```python
+from reportlab.pdfgen import canvas
+c = canvas.Canvas(f"/tmp/Review_Paper{paper_id}.pdf")
+c.setFont("Helvetica-Bold", 14)
+c.drawString(72, 750, f"Review Summary - Paper #{paper_id}")
+c.setFont("Helvetica", 12)
+c.drawString(72, 720, paper_title[:60])
+c.drawString(72, 670, f"Recommendation: {recommendation}")
+c.drawString(72, 640, f"Technical Quality: {tech_quality}")
+c.drawString(72, 620, f"Novelty: {novelty}")
+c.drawString(72, 600, f"Clarity: {clarity}")
+c.drawString(72, 580, f"Relevance: {relevance}")
+c.drawString(72, 560, f"Significance: {significance}")
+c.drawString(72, 520, "See detailed comments in the review form.")
+c.save()
+```
+
+**Step 2: Upload via browser**
+```
+1. Click "Upload from Computer" button
+2. browser action=upload paths=["/tmp/Review_Paper{ID}.pdf"]
+3. Take snapshot to verify upload succeeded
+```
+
+**Step 3: Show user what was uploaded**
+```
+Present to user:
+- Uploaded file: Review_Paper{ID}.pdf (size, timestamp)
+- Form summary: all ratings + recommendation
+- Comments preview
+Ask: "Ready to submit? Say 'submit' to confirm."
+```
+
+**Step 4: Handle errors**
+- Duplicate files: delete one before submit (click X next to file)
+- Error "Found at least two files with same name" = delete duplicate
+- Missing file: re-upload
+
+---
+
+## Review Templates by Scenario
+
+### Scenario A: Comments + File Upload Required (e.g., ICCTAC2026)
+
+When conference requires BOTH comments field AND file upload:
+
+**Comments Field Template (brief, fits in form):**
+```
+This paper [brief summary of topic]. [1-2 sentence assessment]. 
+See attached PDF for detailed review.
+
+Key issue: [main concern if Rework/Reject]
+Recommendation: [specific action for authors]
+```
+
+**Example (Rework):**
+```
+This paper surveys AI and blockchain approaches for mental health monitoring. 
+Good literature review and clear motivation, but the proposed 3-layer architecture 
+lacks implementation or experimental validation. See attached PDF for detailed review.
+
+Key issue: No experiments, no evaluation metrics, reads as a survey rather than research contribution.
+Recommendation: Implement the system with evaluation, or reframe as a formal survey paper.
+```
+
+**Example (Accept):**
+```
+This paper presents an NLP-based resume analysis system with skill matching. 
+Solid methodology and practical results. See attached PDF for detailed review.
+
+Strengths: Clear problem formulation, good accuracy, practical application.
+Minor suggestions in attached PDF.
+```
+
+**PDF Template (detailed review):**
+
+**⚠️ IMPORTANT: Detailed PDFs should be THOROUGH and TECHNICAL:**
+- Do NOT repeat ratings/scores (they're in the form already)
+- Jump directly into technical analysis
+- Provide in-depth critique with specific examples from the paper
+- Present your own technical insights and suggestions
+- Be constructive but substantive
+
+**Structure for detailed PDF:**
+```
+1. TECHNICAL ANALYSIS (main section)
+   - Methodology critique (what works, what doesn't)
+   - Specific technical concerns with page/section references
+   - Statistical/experimental validity observations
+
+2. KEY CONTRIBUTIONS (what the paper actually adds)
+   - Novel aspects (if any)
+   - Practical value
+
+3. CRITICAL GAPS
+   - Missing experiments/comparisons
+   - Methodological weaknesses
+   - Reproducibility concerns
+
+4. SPECIFIC SUGGESTIONS
+   - Concrete improvements with technical detail
+   - References to relevant literature they missed
+   - Alternative approaches to consider
+```
+
+**Example (Accept paper):**
+```
+TECHNICAL ANALYSIS
+
+The authors present a student performance prediction system using 7 classifiers
+with K-Means clustering for profiling. The preprocessing pipeline (categorical 
+encoding, stratified sampling, StandardScaler) is appropriate for this dataset.
+
+The reported 96% accuracy for Logistic Regression warrants scrutiny. This 
+outperformance over ensemble methods (Random Forest: 90%, Gradient Boosting: 92%)
+is unusual and suggests either: (a) the feature space is linearly separable, or
+(b) potential data leakage. The authors should verify no target-correlated 
+features leak into training.
+
+The K-Means clustering with k=5 validated via silhouette analysis is sound, 
+though the paper would benefit from reporting the actual silhouette scores.
+
+CRITICAL GAPS
+
+1. No cross-validation reported - single train/test split (80/20) may not 
+   capture variance in model performance
+2. Table 1 notation error: "0.96%" should be "96%" or "0.96"
+3. No comparison with deep learning baselines (MLP, simple neural nets)
+
+SUGGESTIONS
+
+1. Add 5-fold or 10-fold CV results to strengthen claims
+2. Include confusion matrix to show per-class performance
+3. Report silhouette scores explicitly for clustering validation
+```
+
+---
+
+### Scenario B: Comments Only (No File Upload)
+
+When conference only has text comments field:
+
+**Put full review in comments:**
+```
+SUMMARY: [1-2 sentences on what paper does]
+
+STRENGTHS:
++ [strength 1]
++ [strength 2]
++ [strength 3]
+
+WEAKNESSES:
+- [weakness 1]
+- [weakness 2]
+
+RECOMMENDATION: [Accept/Rework/Reject with brief justification]
+
+SUGGESTIONS FOR AUTHORS:
+[specific actionable feedback]
+```
+
+---
+
+### Scenario C: File Upload Only (Rare)
+
+When conference wants review as uploaded document:
+
+**Create full PDF with all sections:**
+- Use the detailed PDF template from Scenario A
+- Include summary, ratings, strengths, weaknesses, and suggestions
+- Make sure PDF is self-contained (no "see form" references)
 
 ---
 

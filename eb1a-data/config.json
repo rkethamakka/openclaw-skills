@@ -1,16 +1,19 @@
 {
   "asana": {
-    "workspace_url": "https://app.asana.com/1/${ASANA_WORKSPACE_ID}/home",
-    "project_url": "https://app.asana.com/1/${ASANA_WORKSPACE_ID}/project/${ASANA_PROJECT_ID}/list/${ASANA_LIST_ID}",
-    "project_name": "${ASANA_PROJECT_NAME}"
+    "workspace_url": "https://app.asana.com/1/1205769749443087/home",
+    "project_url": "https://app.asana.com/1/1205769749443087/project/1210378985945683/list/1210378985945707",
+    "project_name": "242054. ${LAST_NAME} ${FIRST_NAME}"
   },
   "drive": {
-    "root": "${EB1A_DRIVE_ROOT}"
+    "root": "${HOME}/Library/CloudStorage/GoogleDrive-${EMAIL_ALT}/.shortcut-targets-by-id/1RK1CYuGqyt7sr5BkONcvMan9hjl0hH69/${LAST_NAME} ${FIRST_NAME}",
+    "customer_helpful_content": "https://drive.google.com/drive/folders/1pAxM4Pjb2kiiCQ35-eZ-AF9huxvi3GJ2",
+    "support_letters_folder": "https://drive.google.com/drive/folders/1GdtkWmb5grI53EHkr2q8omlPJIe8T-vr"
   },
+  "reference_cache": "/tmp/eb1a_reference/Customer helpful content",
   "cmt": {
     "url": "https://cmt3.research.microsoft.com",
-    "email": "${EMAIL_CMT}",
-    "password": "${CMT_PASSWORD}",
+    "email": "reachnagaravikiran@gmail.com",
+    "password": "2/6O^~Kd9Xa<",
     "conferences": [
       "ESCI2026", "ICADS2026", "ICCCET2026", "ICCIDS2026", "ICCTAC2026", "ICDCECE2026",
       "ICDSINC2025", "ICICACS2026", "ICIICS2026", "ICISCN2026", "ICWCIE2026", "ISED2025"

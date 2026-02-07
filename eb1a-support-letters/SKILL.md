@@ -7,134 +7,191 @@ description: Manage support letters for EB1A application. Use when working on su
 
 Manage support letters for Critical Role and Original Contributions criteria.
 
-## Shared Config
+## Reference Folders
 
-Load config from: `skills/eb1a-data/config.json`
+### Customer Helpful Content (Shared from EB1A Experts)
+**Drive Link:** https://drive.google.com/drive/folders/1pAxM4Pjb2kiiCQ35-eZ-AF9huxvi3GJ2
 
-## Asana Section
+Contains:
+- `Support letter/` - Guide, forms, examples, letterhead samples
+- `Judging Guides/` - Award & Conference judging guides
+- `Scholarly Articles/` - Intake form template
+- `FOE- Field of Expertise/` - FOE Guide
+- `Decks/` - Onboarding, LORs, Judging, Awards, etc.
+- `Attorney/` - Process docs, timelines
+- `Final merits sample/` - Example final merits
+- `Salary evaluations/` - Salary evaluation guide
+- `RFE document/` - List of RFE questions
 
-**Support Letters** section in the EB1A project.
-
-## Trigger Phrases
-
-- "Show support letter tasks"
-- "Help with support letters"
-- "Support response form"
-- "Innovative contributions form"
-- "Draft support letter"
-- "Check support letter status"
-
----
-
-## Overview
-
-Support letters are used for:
-- **Critical Role** criterion
-- **Original Contributions** criterion
-- Sometimes **Media** criterion
-
-**Workflow:**
-1. Client completes forms (Support Response Form + Innovative Contributions Form)
-2. EB1A team drafts letters based on input
-3. Client + Attorney review and refine
-4. Get signatures from recommenders
-5. Share signed letters with attorney
+### Your Working Folder
+**Path:** `${LAST_NAME} ${FIRST_NAME}/Support Letters/`
+- Copy of templates for your use
+- Store your completed forms here
+- Store signed letters here
 
 ---
 
-## Client Action Items
+## Letter Distribution Rules
 
-1. **Download the support letter folder** from Drive link
-2. **Review the support letter guide**
-3. **Complete Support Response Form** - Details about each recommender
-4. **Complete Innovative Contributions Form** - Detailed descriptions (the more detail, the better letters)
-5. **Provide feedback** on letter drafts
-6. **Get signatures** from recommenders
-7. **Share signed letters** with attorney
+**Total: 5-7 letters** (no backups needed in this range)
 
----
+| Total | Company Letters | Industry Letters |
+|-------|-----------------|------------------|
+| 5     | 3               | 2                |
+| 6     | 3               | 3                |
+| 7     | 4               | 3                |
 
-## Folder Structure
-
-```
-Support Letter Guide (shared folder):
-https://drive.google.com/drive/folders/${SUPPORT_LETTER_FOLDER_ID}
-
-{drive.root}/ (local, if synced):
-├── Support Letters/
-│   ├── Support_Response_Form.docx
-│   ├── Innovative_Contributions_Form.docx
-│   ├── Letter_Draft_[Recommender].docx
-│   └── Signed/
-│       └── [Recommender]_Signed.pdf
-```
+**Max limits:**
+- Company letters: 4 max
+- Industry letters: 3 max
 
 ---
 
-## Forms
+## Company Letters
 
-### Support Response Form
-- Recommender name and title
+**Who:** Managers, skip-level managers, directors, C-level execs who worked with you directly.
+
+**Requirements:**
+- Min 2 from **current company**
+- Up to 2 from **previous orgs**
+- Must have witnessed your contributions firsthand
+
+**What They Cover:**
+- Projects that generated/saved millions in revenue
+- New products/platforms launched
+- Innovative solutions to major problems
+- Products with widespread usage
+
+**For Each Supporter Collect:**
+- Name, Title, Org
+- LinkedIn profile (current!)
+- Resume (attach to Drive)
 - Relationship to you
-- How long they've known you
-- What they can speak to (projects, skills, impact)
+- Project Name Mapping (from Project Intake Form)
+- Innovation Mapping (from Innovative Contributions Form)
+- Media links from media research
+- Collaboration period (years _____ to _____)
 
-### Innovative Contributions Form
-- Detailed descriptions of your innovations
-- Impact and significance
-- Metrics and evidence
-- Who was affected and how
+---
+
+## Industry Expert Letters
+
+**Who:** External experts who know your work, preferably NOT direct collaborators.
+
+**Requirements:**
+- At least 1 must have **NO direct collaboration** with you (independent validation)
+- If collaborated, max **1.5 years** collaboration
+- NO current company employees as industry supporters
+- Can include people from previous orgs if constraints met
+
+**Strategy:**
+- Leverage LinkedIn connections
+- Ask friends for introductions (faster!)
+- Look for higher positions (Director+)
+- All must be from **same field** (engineering/AI, not finance/HR)
+
+---
+
+## Supporter Title Requirements
+
+**At least 2-3 supporters must be:**
+- Director level or above
+- At minimum, all should be Senior level
+- Higher titles = stronger letters
+
+**Avoid:**
+- Same surname as you (looks like family)
+- Anyone with legal/scam issues
+- Unrelated departments (Finance, HR can't speak to technical work)
+
+---
+
+## Forms to Complete
+
+### 1. Supporter Response Form
+For each supporter (up to 4 Company + 3 Industry):
+- Supporter Name
+- Supporter Title
+- Relationship to you
+- LinkedIn Profile
+- Resume (attach link)
+- Project Name Mapping (from Project Intake Form)
+- Innovation Mapping (from Innovative Contributions Form)
+- Media Links
+- Collaboration Period
+
+### 2. Innovative Contributions Form
+For each innovation:
+- **Type:** Product Innovation / Scholarly Article / Open Source / Patent
+- **Name:** Product/feature/article title
+- **Company Name:** Which company (or "personal")
+- **Your Title:** Your role
+- **Dates:** Start-end (mm/yyyy)
+- **Description:**
+  - What makes it innovative
+  - Technical details
+  - Industry-wide impact
+  - Clients using this
+  - Products/services inspired by it
+- **Impact:**
+  - Quantifiable metrics (users, revenue, efficiency gains)
+  - Platform impact (speed, errors, security)
+  - Open source (stars, forks)
+  - Citations (for articles/patents)
+- **Relevant Media:** Links from Asana media task
+- **Additional Docs:** Patents, articles
 
 **⚠️ More detail = Better letters!**
 
 ---
 
-## Letter Drafting (TODO)
+## Letterhead Requirements
 
-*To be developed iteratively*
+When getting signatures:
+- Use **current company letterhead** (preferred)
+- If unavailable, use **personal letterhead**
+- Must include:
+  - Supporter's address (city and state)
+  - Contact email or phone number
 
-Workflow:
-1. Read completed forms
-2. Identify key points for each recommender
-3. Draft letter following EB1A Experts template
-4. Save to Drive
-5. Notify client for review
-
----
-
-## Recommender Management (TODO)
-
-*To be developed iteratively*
-
-Track:
-- Recommender name, title, org
-- Contact info
-- Letter status (Draft / Review / Signed)
-- Follow-up dates
+**Sample letterheads in:** `Support letter/Sample Personal Letter heads/`
 
 ---
 
-## Asana Integration
+## Signature Requirements
 
-**Task:** Support Letters > Overview
-- Check task for current status
-- Read comments for updates from EB1A team
-- Reply with questions or status updates
+- Supporters sign the PDF **directly**
+- **DO NOT** use DocuSign or e-signature tools
+- Must be authentic signature
 
-**Open task:**
+---
+
+## Workflow
+
 ```
-browser action=open profile=openclaw 
-  targetUrl="https://app.asana.com/1/${ASANA_WORKSPACE_ID}/project/${ASANA_PROJECT_ID}/task/${ASANA_TASK_ID}"
+1. FORMS          You complete Response Form + Innovations Form
+                   ↓
+2. STRATEGY       EB1A team creates strategy sheet
+                   ↓
+3. DRAFTING       EB1A team drafts letters
+                   ↓
+4. YOUR REVIEW    You review and provide feedback
+                   ↓
+5. ATTORNEY       Attorney reviews and suggests changes
+                   ↓
+6. SIGNATURES     You get supporters to sign PDFs
+                   ↓
+7. SUBMIT         Share signed letters with attorney
 ```
 
 ---
 
-## Status Flow
+## Status Tracking
 
 ```
 [ ] Forms Not Started
 [ ] Forms In Progress
-[ ] Forms Submitted
+[ ] Forms Submitted → waiting on EB1A team
 [ ] Strategy Sheet Created
 [ ] Letters Drafted
 [ ] Client Review
@@ -142,6 +199,87 @@ browser action=open profile=openclaw
 [ ] Getting Signatures
 [ ] Complete
 ```
+
+---
+
+## Sample Outreach Email
+
+```
+Subject: Request for EB1A Recommendation Letter
+
+Hi [Name],
+
+I am [Your Name], [brief intro/connection]. I'm applying for an EB1A 
+(Extraordinary Ability) Green Card and need recommendation letters.
+
+My application demonstrates expertise in [your field, e.g., AI/ML]. 
+I need letters from people who can speak to my work in this area.
+
+Could you review my profile and consider writing a recommendation? 
+I'd be happy to provide a draft letter from my attorney to make it easier.
+
+Brief profile highlights:
+- [Highlight 1]
+- [Highlight 2]
+- [Highlight 3]
+
+LinkedIn: [your profile]
+
+Please let me know if you have questions.
+
+Best regards,
+[Your Name]
+```
+
+---
+
+## Letter Types & Criteria Usage
+
+| Letter Content | EB1A Criterion |
+|----------------|----------------|
+| Critical role, project impact | Critical/Leading Role |
+| Innovations, technical breakthroughs | Original Contributions |
+| Media mentions, articles about work | Media |
+| Overall expertise statement | Final Merits |
+
+---
+
+## Asana Task
+
+**Support Letters Overview:**
+https://app.asana.com/1/1205769749443087/project/1210378985945683/task/1210378928930136
+
+Check for:
+- Current status updates
+- Comments from EB1A team
+- Next action items
+
+---
+
+## Quick Commands
+
+**Open Support Letters folder:**
+```bash
+open "https://drive.google.com/drive/folders/1GdtkWmb5grI53EHkr2q8omlPJIe8T-vr"
+```
+
+**Open Customer Helpful Content:**
+```bash
+open "https://drive.google.com/drive/folders/1pAxM4Pjb2kiiCQ35-eZ-AF9huxvi3GJ2"
+```
+
+**Open Asana task:**
+```bash
+open "https://app.asana.com/1/1205769749443087/project/1210378985945683/task/1210378928930136"
+```
+
+---
+
+## Example Letters (in reference folder)
+
+- `Recommendation - Original contribution.pdf` - For Original Contributions criterion
+- `Recommendation letter - Critical role.pdf` - For Critical/Leading Role criterion
+- `Recommendation letter generic.pdf` - General format
 
 ---
 
