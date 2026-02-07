@@ -12,7 +12,7 @@
   "reference_cache": "/tmp/eb1a_reference/Customer helpful content",
   "cmt": {
     "url": "https://cmt3.research.microsoft.com",
-    "email": "reachnagaravikiran@gmail.com",
+    "email": "${EMAIL_CMT}",
     "password": "2/6O^~Kd9Xa<",
     "conferences": [
       "ESCI2026", "ICADS2026", "ICCCET2026", "ICCIDS2026", "ICCTAC2026", "ICDCECE2026",
