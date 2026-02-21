@@ -10,7 +10,7 @@ Manage support letters for Critical Role and Original Contributions criteria.
 ## Reference Folders
 
 ### Customer Helpful Content (Shared from EB1A Experts)
-**Drive Link:** https://drive.google.com/drive/folders/1pAxM4Pjb2kiiCQ35-eZ-AF9huxvi3GJ2
+**Drive Link:** https://drive.google.com/drive/folders/${SUPPORT_LETTER_FOLDER_ID}
 
 Contains:
 - `Support letter/` - Guide, forms, examples, letterhead samples
@@ -247,7 +247,7 @@ Best regards,
 ## Asana Task
 
 **Support Letters Overview:**
-https://app.asana.com/1/1205769749443087/project/1210378985945683/task/1210378928930136
+https://app.asana.com/1/${ASANA_WORKSPACE_ID}/project/${ASANA_PROJECT_ID}/task/${ASANA_TASK_ID}
 
 Check for:
 - Current status updates
@@ -265,12 +265,12 @@ open "https://drive.google.com/drive/folders/1GdtkWmb5grI53EHkr2q8omlPJIe8T-vr"
 
 **Open Customer Helpful Content:**
 ```bash
-open "https://drive.google.com/drive/folders/1pAxM4Pjb2kiiCQ35-eZ-AF9huxvi3GJ2"
+open "https://drive.google.com/drive/folders/${SUPPORT_LETTER_FOLDER_ID}"
 ```
 
 **Open Asana task:**
 ```bash
-open "https://app.asana.com/1/1205769749443087/project/1210378985945683/task/1210378928930136"
+open "https://app.asana.com/1/${ASANA_WORKSPACE_ID}/project/${ASANA_PROJECT_ID}/task/${ASANA_TASK_ID}"
 ```
 
 ---

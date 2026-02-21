@@ -1,0 +1,10 @@
+{
+  "cvshealth": {
+    "portal_url": "https://cvshealth.wd1.myworkdayjobs.com/CVS_Health_Careers",
+    "portal_type": "workday",
+    "has_account": true,
+    "email": "${EMAIL}",
+    "password": "Ravi@CVS2026!",
+    "notes": "Created 2026-02-10"
+  }
+}

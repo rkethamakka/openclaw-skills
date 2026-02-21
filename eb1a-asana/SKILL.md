@@ -1,3 +1,8 @@
+---
+name: eb1a-asana
+description: Check EB1A Asana project status, tasks, and progress. Use when checking EB1A progress, pending tasks, overdue items, or tasks needing response.
+---
+
 # eb1a-asana
 
 Check EB1A Asana project status, tasks, and progress.
@@ -16,8 +21,8 @@ Check EB1A Asana project status, tasks, and progress.
 
 ## Project Details
 
-- **Project**: 242054. ${LAST_NAME} ${FIRST_NAME}
-- **URL**: https://app.asana.com/1/1205769749443087/project/1210378985945683/list/1210378985945707
+- **Project**: ${ASANA_PROJECT_NAME}
+- **URL**: https://app.asana.com/1/${ASANA_WORKSPACE_ID}/project/${ASANA_PROJECT_ID}/list/${ASANA_LIST_ID}
 - **Profile**: openclaw (isolated browser)
 
 ## Sections (Categories)
@@ -49,7 +54,7 @@ Check EB1A Asana project status, tasks, and progress.
 ### 1. Open Asana Project
 
 ```
-browser action=open profile=openclaw targetUrl="https://app.asana.com/1/1205769749443087/project/1210378985945683/list/1210378985945707"
+browser action=open profile=openclaw targetUrl="https://app.asana.com/1/${ASANA_WORKSPACE_ID}/project/${ASANA_PROJECT_ID}/list/${ASANA_LIST_ID}"
 ```
 
 ### 2. Take Snapshot

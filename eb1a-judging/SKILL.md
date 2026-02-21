@@ -422,4 +422,115 @@ When conference wants review as uploaded document:
 
 ---
 
+## Workflow: Certificate Request
+
+After completing all reviews for a conference, request a reviewer certificate from the conference chair.
+
+### Trigger Phrases
+
+- "Request certificate for [conference]"
+- "Get reviewer certificate for [conference]"
+- "Certificate request [conference]"
+
+### Input
+
+- **Conference name** (required): e.g., "ICCTAC2026", "ICCIDS2026"
+- **Chair person name** (optional): If not provided, address as "[Conference Name] Chair"
+
+### Steps
+
+```
+1. Find conference code from config.cmt.conferences matching the name
+2. Navigate to https://cmt3.research.microsoft.com/{CODE}/Submission/Rvw
+3. Wait for page load
+4. Get total paper count from "X - Y of Z" indicator
+5. For EACH paper, check status:
+   - Must show "View Review" (not "Enter Review")
+   - Record paper ID and title
+6. If ANY paper shows "Enter Review" or "Awaiting Decision":
+   - STOP and alert user: "Cannot request certificate. Pending reviews:"
+   - List papers still needing review
+7. If ALL papers show "View Review":
+   - Generate certificate request email
+```
+
+### Verification Check
+
+**Before generating email, verify:**
+```
+For each paper in conference:
+  - Status column shows "View Review" link (not "Enter Review")
+  - This confirms review was submitted
+
+If verification fails:
+  "⚠️ Cannot request certificate for {CONFERENCE}
+   
+   Pending reviews:
+   - Paper #{ID}: {Title} - Status: {status}
+   
+   Complete these reviews first."
+```
+
+### Email Template
+
+```
+Dear {CHAIR_NAME or "[Conference Name] Chair"},
+
+Subject: Requesting Certificate of Completion / Participation
+
+I have participated and completed reviewing the assignments given for "{CONFERENCE_FULL_NAME}". I request you to please look into the same and provide me with evidence of participation/completion, such as a certificate, as it would be useful for me in the future.
+
+Papers Reviewed:
+- Paper #{ID1}: {Title1}
+- Paper #{ID2}: {Title2}
+- Paper #{ID3}: {Title3}
+[... all papers ...]
+
+Waiting for your reply.
+
+Thanks & Regards,
+Ravi Kiran ${LAST_NAME}
+```
+
+### Output
+
+Present to user:
+1. ✅ Verification status (all papers reviewed)
+2. 📧 Complete email ready to copy
+3. 📋 List of papers included
+
+### Example Usage
+
+**User:** "Request certificate for ICCTAC2026, chair is Dr. Smith"
+
+**Agent:**
+```
+✅ Verified: All 3 papers reviewed for ICCTAC2026
+
+📧 Certificate Request Email:
+---
+Dear Dr. Smith,
+
+Subject: Requesting Certificate of Completion / Participation
+
+I have participated and completed reviewing the assignments given for "ICCTAC2026". 
+I request you to please look into the same and provide me with evidence of 
+participation/completion, such as a certificate, as it would be useful for me in the future.
+
+Papers Reviewed:
+- Paper #88: Resume Analysis Using NLP Techniques
+- Paper #131: AI and Blockchain for Mental Health Monitoring  
+- Paper #145: Deep Learning in Medical Imaging
+
+Waiting for your reply.
+
+Thanks & Regards,
+Ravi Kiran ${LAST_NAME}
+---
+
+Copy this email and send to the conference chair.
+```
+
+---
+
 *eb1a-judging - CMT Paper Reviews for Judging Criterion*
