@@ -11,7 +11,7 @@ Personal X/Twitter content skill for Raki. Turns daily work and tech trends into
 
 ```
 Handle: @[TBD - Raki to provide]
-Profile: ${WORKSPACE}/skills/twitter-voice/profile.json
+Profile: ${WORKSPACE}-2/skills/twitter-voice/profile.json
 ```
 
 ## Trigger Phrases
@@ -28,8 +28,8 @@ Profile: ${WORKSPACE}/skills/twitter-voice/profile.json
 **From daily work (memory files):**
 ```bash
 # Read today's and yesterday's memory
-cat ${WORKSPACE}/memory/$(date +%Y-%m-%d).md
-cat ${WORKSPACE}/memory/$(date -v-1d +%Y-%m-%d).md
+cat ${WORKSPACE}-2/memory/$(date +%Y-%m-%d).md
+cat ${WORKSPACE}-2/memory/$(date -v-1d +%Y-%m-%d).md
 ```
 
 **What to extract:**

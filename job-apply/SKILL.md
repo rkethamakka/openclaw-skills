@@ -9,7 +9,7 @@ Browser automation for job applications.
 
 ## Shared Data
 
-Profile and file paths: `skills/job-data/profile.json`
+Profile and file paths: `/opt/homebrew/lib/node_modules/openclaw/skills/job-data/profile.json`
 
 ## User Preferences
 
@@ -405,7 +405,7 @@ Step 3: More About You → EEO, Disability, Veteran, etc.
 
 The actual resume path through Google Drive:
 ```
-${HOME}/Library/CloudStorage/GoogleDrive-${EMAIL_ALT}/.shortcut-targets-by-id/1WN3YyrubVytgstdOBpof50wb-ouDYYuk/ravi_jobs/${RESUME_FILE}
+${JOBS_DIR}/${RESUME_FILE}
 ```
 
 **Symlink shortcut:**

@@ -1,22 +1,33 @@
 {
-  "asana": {
-    "workspace_url": "https://app.asana.com/1/${ASANA_WORKSPACE_ID}/home",
-    "project_url": "https://app.asana.com/1/${ASANA_WORKSPACE_ID}/project/${ASANA_PROJECT_ID}/list/${ASANA_LIST_ID}",
-    "project_name": "${ASANA_PROJECT_NAME}"
-  },
   "drive": {
-    "root": "${HOME}/Library/CloudStorage/GoogleDrive-${EMAIL_ALT}/.shortcut-targets-by-id/${DRIVE_SHORTCUT_ID}/${LAST_NAME} ${FIRST_NAME}",
-    "customer_helpful_content": "https://drive.google.com/drive/folders/${SUPPORT_LETTER_FOLDER_ID}",
-    "support_letters_folder": "https://drive.google.com/drive/folders/1GdtkWmb5grI53EHkr2q8omlPJIe8T-vr"
+    "root": "${HOME}/Library/CloudStorage/GoogleDrive-${EMAIL}/My Drive/${LAST_NAME} ${FIRST_NAME}",
+    "folders": {
+      "scholarlyArticles": "Scholarly Articles (1)",
+      "supportLetters": "Support Letters",
+      "media": "MEDIA ",
+      "awards": "Awards",
+      "memberships": "Membership",
+      "judging": "Judging",
+      "speakingOpportunity": "Speaking Opportunity"
+    }
   },
-  "reference_cache": "/tmp/eb1a_reference/Customer helpful content",
   "cmt": {
-    "url": "https://cmt3.research.microsoft.com",
     "email": "${EMAIL_CMT}",
     "password": "${CMT_PASSWORD}",
     "conferences": [
-      "ESCI2026", "ICADS2026", "ICCCET2026", "ICCIDS2026", "ICCTAC2026", "ICDCECE2026",
-      "ICDSINC2025", "ICICACS2026", "ICIICS2026", "ICISCN2026", "ICWCIE2026", "ISED2025"
+      { "name": "ICCTAC2026", "code": "ICCTAC2026" },
+      { "name": "ICADS2026",  "code": "ICADS2026"  },
+      { "name": "ICCIDS2026", "code": "ICCIDS2026" }
     ]
+  },
+  "asana": {
+    "workspaceId": "${ASANA_WORKSPACE_ID}",
+    "projectId": "${ASANA_PROJECT_ID}",
+    "listId": "${ASANA_LIST_ID}",
+    "projectName": "${ASANA_PROJECT_NAME}"
+  },
+  "person": {
+    "fullName": "${FULL_NAME}",
+    "shortName": "Ravi"
   }
 }

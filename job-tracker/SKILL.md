@@ -9,7 +9,7 @@ Manage the job application tracker spreadsheet.
 
 ## Shared Data
 
-Profile and file paths: `skills/job-data/profile.json`
+Profile and file paths: `/opt/homebrew/lib/node_modules/openclaw/skills/job-data/profile.json`
 
 ## Tracker Location
 

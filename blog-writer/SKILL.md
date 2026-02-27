@@ -9,15 +9,19 @@ Write and publish blog posts to ${GITHUB_HANDLE}.github.io.
 
 ## Local Workspace
 
-All blog posts are stored locally and synced to GitHub:
+The blog repo is checked out locally at:
 
 ```
-workspace/blog/
-├── index.json                           # Blog index (metadata, stats, topics)
-├── ai-agents-mental-model-openclaw.md   # Published posts
-├── my-draft-post.md                     # Drafts (status: "draft" in index)
-└── ...
+~/Documents/git-repos/${GITHUB_HANDLE}.github.io/
+├── index.html                  # Resume (main page)
+└── blog/
+    ├── index.html              # Blog listing (must list all posts)
+    ├── post.html               # Markdown renderer (don't modify)
+    └── posts/                  # Markdown post files
+        └── *.md
 ```
+
+**Work directly from the git repo — no separate workspace copy needed.**
 
 **GitHub repo:** `${GITHUB_HANDLE}/${GITHUB_HANDLE}.github.io`
 **Live site:** `https://${GITHUB_HANDLE}.github.io/blog/`
@@ -29,7 +33,7 @@ workspace/blog/
 When Raki asks: "What blogs do I have?" / "Show my posts" / "Blog status"
 
 ```bash
-cat ${WORKSPACE}/blog/index.json
+ls ~/Documents/git-repos/${GITHUB_HANDLE}.github.io/blog/posts/
 ```
 
 **Response format:**
@@ -52,7 +56,7 @@ AI (3), distributed-systems (2), career (1)
 When Raki asks: "Show me the [title] post" / "Read [slug]"
 
 ```bash
-cat ${WORKSPACE}/blog/[slug].md
+cat ~/Documents/git-repos/${GITHUB_HANDLE}.github.io/blog/posts/[slug].md
 ```
 
 ### Update a Blog
@@ -95,16 +99,16 @@ tags: ["tag1", "tag2"]
 Content here...
 ```
 
-**Step 3: Save locally**
+**Step 3: Save to repo**
 
 ```bash
-# Save to workspace
-${WORKSPACE}/blog/[slug].md
+# Save directly to the local repo
+~/Documents/git-repos/${GITHUB_HANDLE}.github.io/blog/posts/[slug].md
 ```
 
-**Step 4: Update index.json**
+**Step 4: Update blog/index.html**
 
-Add entry to `posts` array, update `stats` and `topics`.
+Add the new post entry at the top of the post list (see HTML Index section).
 
 **Step 5: Publish** (see Publishing section)
 
@@ -131,17 +135,10 @@ The slug becomes the URL: `/blog/post.html?p=building-ai-agents`
 
 ## Publishing
 
-### Option 1: Git Push (if configured)
+### Option 1: Git Push (preferred)
 
 ```bash
-cd /tmp/${GITHUB_HANDLE}.github.io
-git pull origin main
-
-# Copy updated files
-cp ${WORKSPACE}/blog/[slug].md blog/posts/
-
-# Update blog index.html (see HTML Index section)
-
+cd ~/Documents/git-repos/${GITHUB_HANDLE}.github.io
 git add .
 git commit -m "Add post: [title]"
 git push origin main
@@ -220,7 +217,9 @@ After any blog change, update the index:
 ```python
 import json
 
-index_path = "${WORKSPACE}/blog/index.json"
+# Note: there's no separate index.json — the source of truth is blog/index.html
+# Update blog/index.html directly (see HTML Index section)
+index_path = "${HOME}/Documents/git-repos/${GITHUB_HANDLE}.github.io/blog/index.html"
 with open(index_path) as f:
     index = json.load(f)
 
@@ -252,26 +251,19 @@ with open(index_path, "w") as f:
 
 ## Syncing from GitHub
 
-If the repo has posts not in local workspace:
-
 ```bash
-cd /tmp/${GITHUB_HANDLE}.github.io
+cd ~/Documents/git-repos/${GITHUB_HANDLE}.github.io
 git pull origin main
-
-# Copy any new posts
-cp blog/posts/*.md ${WORKSPACE}/blog/
-
-# Then rebuild index.json by scanning frontmatter
 ```
 
-## Scan Posts to Rebuild Index
+## Scan Posts to List/Rebuild Index
 
 ```python
 import os
 import json
 import re
 
-blog_dir = "${WORKSPACE}/blog"
+blog_dir = "${HOME}/Documents/git-repos/${GITHUB_HANDLE}.github.io/blog/posts"
 posts = []
 topics = {}
 
@@ -323,24 +315,22 @@ with open(os.path.join(blog_dir, "index.json"), "w") as f:
 
 ## Checklist: New Post
 
-- [ ] Write post in workspace/blog/[slug].md
+- [ ] Write post in `~/Documents/git-repos/${GITHUB_HANDLE}.github.io/blog/posts/[slug].md`
 - [ ] Include proper frontmatter (title, date, tags)
-- [ ] Update workspace/blog/index.json
-- [ ] Copy post to /tmp/${GITHUB_HANDLE}.github.io/blog/posts/
-- [ ] Update /tmp/${GITHUB_HANDLE}.github.io/blog/index.html
-- [ ] Push to GitHub (git or browser upload)
+- [ ] Update `blog/index.html` (add entry at top of post list)
+- [ ] `git add . && git commit -m "Add post: [title]" && git push`
 - [ ] Verify live at ${GITHUB_HANDLE}.github.io/blog/
 
 ## Site Structure Reference
 
 ```
-${GITHUB_HANDLE}.github.io/
+~/Documents/git-repos/${GITHUB_HANDLE}.github.io/
 ├── index.html              # Resume (main page)
-├── blog/
-│   ├── index.html          # Blog listing (must list all posts)
-│   ├── post.html           # Markdown renderer (don't modify)
-│   └── posts/              # Markdown files
-│       └── *.md
+└── blog/
+    ├── index.html          # Blog listing (must list all posts)
+    ├── post.html           # Markdown renderer (don't modify)
+    └── posts/              # Markdown files
+        └── *.md
 ```
 
 ## URLs

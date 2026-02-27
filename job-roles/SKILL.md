@@ -9,7 +9,7 @@ Discover and search for relevant roles at target companies.
 
 ## Shared Data
 
-Profile and file paths: `skills/job-data/profile.json`
+Profile and file paths: `/opt/homebrew/lib/node_modules/openclaw/skills/job-data/profile.json`
 
 ## Trigger Phrases
 
