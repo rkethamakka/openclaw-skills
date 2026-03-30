@@ -9,7 +9,7 @@ Generate personalized referral request messages.
 
 ## Shared Data
 
-Profile and file paths: `/opt/homebrew/lib/node_modules/openclaw/skills/job-data/profile.json`
+Profile and file paths: `~/.openclaw/skills/job-data/profile.json`
 
 ## Trigger Phrases
 

@@ -9,14 +9,14 @@ Shared configuration for all EB1A skills. Not invoked directly.
 
 ## Config Location
 
-`/opt/homebrew/lib/node_modules/openclaw//opt/homebrew/lib/node_modules/openclaw/skills/eb1a-data/config.json`
+`~/.openclaw/skills/job-data/eb1a-config.json`
 
 ## Usage
 
 Other skills load:
 ```python
 import json
-with open("/opt/homebrew/lib/node_modules/openclaw//opt/homebrew/lib/node_modules/openclaw/skills/eb1a-data/config.json") as f:
+with open("~/.openclaw/skills/job-data/eb1a-config.json") as f:
     config = json.load(f)
 
 drive_root = config["drive"]["root"]

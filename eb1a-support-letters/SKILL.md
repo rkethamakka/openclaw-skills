@@ -10,7 +10,7 @@ Manage support letters for Critical Role and Original Contributions criteria.
 ## Reference Folders
 
 ### Customer Helpful Content (Shared from EB1A Experts)
-**Drive Link:** https://drive.google.com/drive/folders/${SUPPORT_LETTER_FOLDER_ID}
+**Drive Link:** ${SUPPORT_LETTERS_PATH}
 
 Contains:
 - `Support letter/` - Guide, forms, examples, letterhead samples
@@ -24,7 +24,7 @@ Contains:
 - `RFE document/` - List of RFE questions
 
 ### Your Working Folder
-**Path:** `${LAST_NAME} ${FIRST_NAME}/Support Letters/`
+**Path:** `${DRIVE_ROOT}/Support Letters/`
 - Copy of templates for your use
 - Store your completed forms here
 - Store signed letters here
@@ -247,7 +247,7 @@ Best regards,
 ## Asana Task
 
 **Support Letters Overview:**
-https://app.asana.com/1/${ASANA_WORKSPACE_ID}/project/${ASANA_PROJECT_ID}/task/${ASANA_TASK_ID}
+https://app.asana.com/1/${ASANA_WORKSPACE_ID}/project/${ASANA_PROJECT_ID}/task/<task-id-varies-per-task>
 
 Check for:
 - Current status updates
@@ -265,12 +265,12 @@ open "https://drive.google.com/drive/folders/1GdtkWmb5grI53EHkr2q8omlPJIe8T-vr"
 
 **Open Customer Helpful Content:**
 ```bash
-open "https://drive.google.com/drive/folders/${SUPPORT_LETTER_FOLDER_ID}"
+open "${SUPPORT_LETTERS_PATH}"
 ```
 
 **Open Asana task:**
 ```bash
-open "https://app.asana.com/1/${ASANA_WORKSPACE_ID}/project/${ASANA_PROJECT_ID}/task/${ASANA_TASK_ID}"
+open "https://app.asana.com/1/${ASANA_WORKSPACE_ID}/project/${ASANA_PROJECT_ID}/task/<task-id-varies-per-task>"
 ```
 
 ---

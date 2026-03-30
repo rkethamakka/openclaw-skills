@@ -9,7 +9,7 @@ Browser automation for job applications.
 
 ## Shared Data
 
-Profile and file paths: `/opt/homebrew/lib/node_modules/openclaw/skills/job-data/profile.json`
+Profile and file paths: `~/.openclaw/skills/job-data/profile.json`
 
 ## User Preferences
 

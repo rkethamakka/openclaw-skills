@@ -9,7 +9,7 @@ Review conference papers on Microsoft CMT for the EB1A Judging criterion.
 
 ## Shared Config
 
-Load config from: `/opt/homebrew/lib/node_modules/openclaw/skills/eb1a-data/config.json`
+Load config from: `~/.openclaw/skills/job-data/eb1a-config.json`
 
 CMT credentials and conference codes are in the config.
 

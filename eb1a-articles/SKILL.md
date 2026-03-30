@@ -9,7 +9,7 @@ Write scholarly articles for the EB1A Scholarly Articles criterion.
 
 ## Shared Config
 
-Load config from: `/opt/homebrew/lib/node_modules/openclaw/skills/eb1a-data/config.json`
+Load config from: `~/.openclaw/skills/job-data/eb1a-config.json`
 
 ## Folder Structure
 

@@ -9,7 +9,11 @@ Discover and search for relevant roles at target companies.
 
 ## Shared Data
 
-Profile and file paths: `/opt/homebrew/lib/node_modules/openclaw/skills/job-data/profile.json`
+Profile and file paths: `~/.openclaw/skills/job-data/profile.json`
+
+Load profile.json and use:
+- `JOBS_DIR` + `TRACKER_FILE` for tracker access
+- `LOCATION_SHORT` for location filter (e.g. "Seattle / Remote US / California / Austin")
 
 ## Trigger Phrases
 
