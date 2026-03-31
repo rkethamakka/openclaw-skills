@@ -1,0 +1,8 @@
+# Private skills - kept local only, never pushed to GitHub
+aircall-ai-coding/
+aircall-backend/
+leetcode-solver/
+system-design-interview/
+
+# Local config with PII - never commit
+job-data/
